@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/boilerplate-garage/hapi-mysql-boilerplate#readme",
   "dependencies": {
-    "hapi": "^12.1.0"
+    "dotenv": "^2.0.0",
+    "hapi": "^12.1.0",
+    "mongoose": "^4.3.7"
   }
 }
