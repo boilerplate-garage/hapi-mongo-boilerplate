@@ -1,0 +1,22 @@
+{
+  "name": "hapi-mongo-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boilerplate-garage/hapi-mysql-boilerplate.git"
+  },
+  "author": "IzumiSy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/boilerplate-garage/hapi-mysql-boilerplate/issues"
+  },
+  "homepage": "https://github.com/boilerplate-garage/hapi-mysql-boilerplate#readme",
+  "dependencies": {
+    "hapi": "^12.1.0"
+  }
+}
