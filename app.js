@@ -1,18 +1,31 @@
 'use strict';
 
-var Hapi = require('hapi');
+var Glue = require('glue');
 var routes = require('./routes.js');
 
-var server = new Hapi.Server();
+var manifest = {
+  connections: [
+    {
+      host: 'localhost',
+      port: 8000,
+      labels: ['web']
+    }
+  ],
+  registrations: [
+    {
+      plugin: {
+        register: 'hapi-mongodb',
+        options: {}
+      }
+    }
+  ]
+};
 
-server.connection({
-  host: 'localhost',
-  port: 8000
-});
-
-routes.setupRoutes(server);
-
-server.start(function(err) {
+Glue.compose(manifest, {}, function(err, server) {
   if (err) throw err;
-  console.log("Server running at: " + server.info.uri);
+  routes.setupRoutes(server);
+  server.start(function(err) {
+    if (err) throw err;
+    console.log("Server running at: " + server.info.uri);
+  });
 });
