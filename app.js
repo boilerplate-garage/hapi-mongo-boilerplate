@@ -2,13 +2,16 @@
 
 var Glue = require('glue');
 var Dotenv = require('dotenv');
+var Util = require('util');
 var routes = require('./routes.js');
+
+Dotenv.config();
 
 var manifest = {
   connections: [
     {
-      host: 'localhost',
-      port: 8000,
+      host: process.env.HOST,
+      port: process.env.PORT,
       labels: ['web']
     }
   ],
