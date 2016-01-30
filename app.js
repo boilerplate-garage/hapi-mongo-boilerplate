@@ -1,6 +1,7 @@
 'use strict';
 
 var Glue = require('glue');
+var Dotenv = require('dotenv');
 var routes = require('./routes.js');
 
 var manifest = {
