@@ -1,8 +1,8 @@
 'use strict';
 
-var Glue = require('glue');
+var Glue   = require('glue');
 var Dotenv = require('dotenv');
-var Util = require('util');
+var Util   = require('util');
 var routes = require('./routes.js');
 
 Dotenv.config();
