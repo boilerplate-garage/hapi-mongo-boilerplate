@@ -1,19 +1,18 @@
 'use strict';
 
 var Hapi = require('hapi');
-var Dotenv = require('dotenv');
-var Mongoose = require('mongoose');
+var routes = require('./routes.js');
 
 var server = new Hapi.Server();
-var config = {
+
+server.connection({
   host: 'localhost',
   port: 8000
-}
+});
 
-server.connection(config);
+routes.setupRoutes(server);
+
 server.start(function(err) {
-  if (err) {
-    throw err;
-  }
+  if (err) throw err;
   console.log("Server running at: " + server.info.uri);
 });
