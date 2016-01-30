@@ -3,7 +3,7 @@ var routes = [
     method:  'GET',
     path:    '/',
     handler: function(request, reply) {
-      reply("/");
+      return reply("/");
     }
   },
   {
