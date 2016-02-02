@@ -10,11 +10,6 @@ var routes = [
   },
   {
     method:  'GET',
-    path:    '/users',
-    handler: user.userGetAction
-  },
-  {
-    method:  'GET',
     path:    '/items',
     handler: item.itemGetAction
   }
