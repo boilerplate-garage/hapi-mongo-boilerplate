@@ -2,7 +2,7 @@ var Boom = require('boom');
 
 var mongoConnect = function(req, collectionName) {
   var db = req.server.plugins['hapi-mongodb'].db;
-  return db.collection(collecitonName);
+  return db.collection(collectionName);
 }
 
 module.exports = {
