@@ -1,3 +1,5 @@
+var Boom = require('boom');
+
 var mongoConnect = function(req, collectionName) {
   var db = req.server.plugins['hapi-mongodb'].db;
   return db.collection(collecitonName);
@@ -24,9 +26,18 @@ module.exports = {
 
   itemPostAction: function(request, reply) {
     var db = mongoConnect(request, "items");
+    var payload = {
+      name: request.payload.name,
+      description: request.payload.name
+    }
+
+    db.insert(payload, { w: 1 }, function(err, doc) {
+      if (err) {
+        return reply(Boom.notImplemented("Internal Server Error"));
+      }
+      return reply(doc);
+    });
 
     console.log("POST /item");
-
-    return reply("POST /item");
   }
 };
