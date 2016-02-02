@@ -13,9 +13,14 @@ var routes = [
     handler: item.itemPostAction
   },
   {
+    method:  'POST',
+    path:    '/item/{id}',
+    handler: item.itemGetOneAction
+  },
+  {
     method:  'GET',
     path:    '/items',
-    handler: item.itemGetAction
+    handler: item.itemGetAllAction
   }
 ];
 

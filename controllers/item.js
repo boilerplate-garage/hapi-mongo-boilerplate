@@ -1,5 +1,9 @@
 module.exports = {
-  itemGetAction: function(request, reply) {
+  itemGetAllAction: function(request, reply) {
+    return reply("GET /items");
+  },
+
+  itemGetOneAction: function(request, reply) {
     return reply("GET /items");
   },
 
