@@ -1,3 +1,5 @@
+var Joi = require("joi");
+
 var root = require('./controllers/root.js');
 var item = require('./controllers/item.js');
 
@@ -13,7 +15,10 @@ var routes = [
     handler: item.itemPostAction,
     config: {
       validate: {
-        payload: { }
+        payload: {
+          name: Joi.string(),
+          description: Joi.string()
+        }
       }
     }
   },
