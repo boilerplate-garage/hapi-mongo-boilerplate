@@ -10,10 +10,13 @@ var routes = [
   {
     method:  'POST',
     path:    '/item',
-    handler: item.itemPostAction
+    handler: item.itemPostAction,
+    validate: {
+      payload: { }
+    }
   },
   {
-    method:  'POST',
+    method:  'GET',
     path:    '/item/{id}',
     handler: item.itemGetOneAction
   },
