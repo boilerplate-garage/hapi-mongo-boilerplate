@@ -3,6 +3,16 @@ const Joi = require("joi");
 const root = require('./controllers/root.js');
 const item = require('./controllers/item.js');
 
+const dbConnector = {
+  assign: 'db',
+  method: function(req, reply) {
+    reply(function(collectionName) {
+      const db = req.server.plugins['hapi-mongodb'].db;
+      return db.collection(collectionName);
+    });
+  }
+};
+
 const routes = [
   {
     method:  'GET',
@@ -14,6 +24,7 @@ const routes = [
     path:    '/item',
     handler: item.itemPostAction,
     config: {
+      pre: [dbConnector],
       validate: {
         payload: {
           name: Joi.string(),
@@ -25,12 +36,18 @@ const routes = [
   {
     method:  'GET',
     path:    '/item/{id}',
-    handler: item.itemGetOneAction
+    handler: item.itemGetOneAction,
+    config: {
+      pre: [dbConnector]
+    }
   },
   {
     method:  'GET',
     path:    '/items',
-    handler: item.itemGetAllAction
+    handler: item.itemGetAllAction,
+    config: {
+      pre: [dbConnector]
+    }
   }
 ];
 
