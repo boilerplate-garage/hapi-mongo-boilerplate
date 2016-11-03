@@ -8,19 +8,13 @@ const mongoConnect = function(req, collectionName) {
 module.exports = {
   itemGetAllAction: function(request, reply) {
     const db = mongoConnect(request, "items");
-
     db.find().toArray(function(err, doc) {
       return reply(doc);
     });
-
-    console.log("GET /items");
   },
 
   itemGetOneAction: function(request, reply) {
     const db = mongoConnect(request, "items");
-
-    console.log("GET /item/" + request.params.id);
-
     return reply("GET /item/{id}");
   },
 
@@ -37,7 +31,5 @@ module.exports = {
       }
       return reply(doc);
     });
-
-    console.log("POST /item");
   }
 };
