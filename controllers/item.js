@@ -1,31 +1,23 @@
 const Boom = require('boom');
 
-const mongoConnect = function(req, collectionName) {
-  const db = req.server.plugins['hapi-mongodb'].db;
-  return db.collection(collectionName);
-}
-
 module.exports = {
-  itemGetAllAction: function(request, reply) {
-    const db = mongoConnect(request, "items");
-    db.find().toArray(function(err, doc) {
+  itemGetAllAction: function(req, reply) {
+    req.pre.db('items').find().toArray(function(err, doc) {
       return reply(doc);
     });
   },
 
-  itemGetOneAction: function(request, reply) {
-    const db = mongoConnect(request, "items");
+  itemGetOneAction: function(req, reply) {
     return reply("GET /item/{id}");
   },
 
-  itemPostAction: function(request, reply) {
-    const db = mongoConnect(request, "items");
+  itemPostAction: function(req, reply) {
     const payload = {
       name: request.payload.name,
       description: request.payload.name
     }
 
-    db.insert(payload, { w: 1 }, function(err, doc) {
+    req.pre.db('items').insert(payload, { w: 1 }, function(err, doc) {
       if (err) {
         return reply(Boom.notImplemented("Internal Server Error"));
       }
