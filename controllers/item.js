@@ -8,7 +8,14 @@ module.exports = {
   },
 
   itemGetOneAction: function(req, reply) {
-    return reply("GET /item/{id}");
+    const ObjectId = request.server.plugins['hapi-mongodb'].ObjectID;
+
+    req.pre.db('items').findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
+      if (err) {
+        return reply(Boom.notImplemented("Internal Server Error"));
+      }
+      return reply(doc);
+    });
   },
 
   itemPostAction: function(req, reply) {
