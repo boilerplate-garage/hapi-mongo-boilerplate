@@ -1,13 +1,13 @@
-var Boom = require('boom');
+const Boom = require('boom');
 
-var mongoConnect = function(req, collectionName) {
-  var db = req.server.plugins['hapi-mongodb'].db;
+const mongoConnect = function(req, collectionName) {
+  const db = req.server.plugins['hapi-mongodb'].db;
   return db.collection(collectionName);
 }
 
 module.exports = {
   itemGetAllAction: function(request, reply) {
-    var db = mongoConnect(request, "items");
+    const db = mongoConnect(request, "items");
 
     db.find().toArray(function(err, doc) {
       return reply(doc);
@@ -17,7 +17,7 @@ module.exports = {
   },
 
   itemGetOneAction: function(request, reply) {
-    var db = mongoConnect(request, "items");
+    const db = mongoConnect(request, "items");
 
     console.log("GET /item/" + request.params.id);
 
@@ -25,8 +25,8 @@ module.exports = {
   },
 
   itemPostAction: function(request, reply) {
-    var db = mongoConnect(request, "items");
-    var payload = {
+    const db = mongoConnect(request, "items");
+    const payload = {
       name: request.payload.name,
       description: request.payload.name
     }
