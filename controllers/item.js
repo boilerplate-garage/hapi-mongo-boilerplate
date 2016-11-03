@@ -8,7 +8,7 @@ module.exports = {
   },
 
   itemGetOneAction: function(req, reply) {
-    const ObjectId = request.server.plugins['hapi-mongodb'].ObjectID;
+    const ObjectID = req.server.plugins['hapi-mongodb'].ObjectID;
 
     req.pre.db('items').findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
       if (err) {
@@ -20,8 +20,8 @@ module.exports = {
 
   itemPostAction: function(req, reply) {
     const payload = {
-      name: request.payload.name,
-      description: request.payload.name
+      name: re.payload.name,
+      description: req.payload.name
     }
 
     req.pre.db('items').insert(payload, { w: 1 }, function(err, doc) {
