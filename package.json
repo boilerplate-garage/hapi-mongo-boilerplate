@@ -19,7 +19,6 @@
   "homepage": "https://github.com/boilerplate-garage/hapi-mysql-boilerplate#readme",
   "dependencies": {
     "boom": "^3.1.2",
-    "dotenv": "^2.0.0",
     "glue": "^3.1.0",
     "hapi": "^12.1.0",
     "hapi-mongodb": "^5.0.0",

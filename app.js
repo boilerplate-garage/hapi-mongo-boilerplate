@@ -1,17 +1,14 @@
 'use strict';
 
 const Glue   = require('glue');
-const Dotenv = require('dotenv');
 const Util   = require('util');
 const routes = require('./routes.js');
-
-Dotenv.config();
 
 const manifest = {
   connections: [
     {
-      host: process.env.HOST,
-      port: process.env.PORT,
+      host: process.env.HOST || 'localhost',
+      port: process.env.PORT || 8000,
       labels: ['web']
     }
   ],
