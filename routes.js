@@ -1,9 +1,9 @@
-var Joi = require("joi");
+const Joi = require("joi");
 
-var root = require('./controllers/root.js');
-var item = require('./controllers/item.js');
+const root = require('./controllers/root.js');
+const item = require('./controllers/item.js');
 
-var routes = [
+const routes = [
   {
     method:  'GET',
     path:    '/',
